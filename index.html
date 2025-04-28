@@ -1,105 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sblip.dev</title>
-  <meta http-equiv="refresh" content="0;url=https://github.com/shaurya-blip/">
+    <title>Eat Travel Stretch - Yoga, Travel, Food</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        * {
-margin: 0;
-background-color: black;
-}
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            /* Dark Gray text */
+            background-color: #f8fafc;
+            /* Light Gray base background */
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+            position: relative;
+            /* Needed for positioning animated elements */
+        }
 
-.all {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height:100vh;
-  width:100%;
-}
+        /* --- Abstract Blob Background --- */
+        .blob-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-.container {
-  display: flex;
-  flex-direction: column;
-}
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(40px);
+            animation: moveAndMorph 25s infinite alternate ease-in-out;
+        }
 
-.top {
-  margin-bottom: -53px;
-  margin-left: 23px;
-  background-color: transparent;
-  border: 2px solid white;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  border-radius: 100px;
-  width: 100px;
-  height: 100px;
-  transform: rotateY(0deg) rotate(45deg);
-}
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a5f3fc;
+            top: 10%;
+            left: 10%;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
 
-.inner-oval {
-  align-items: center;
-  border: 2px solid white;
-  width: 150px;
-  height: 30px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: space-around;
-}
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background-color: #fbcfe8;
+            top: 60%;
+            left: 70%;
+            animation-duration: 28s;
+            animation-delay: -10s;
+        }
 
-.circle1 {
-  border: 2px solid white;
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  animation: zoom 3s linear 0s infinite;
-}
+        .blob-3 {
+            width: 500px;
+            height: 500px;
+            background-color: #a7f3d0;
+            top: 40%;
+            left: 30%;
+            animation-duration: 35s;
+            animation-delay: -15s;
+        }
 
-.circle2 {
-  border: 2px solid white;
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  animation: zoom 3s linear 0s infinite;
-  animation-delay: 1s;
-  
-}
+        .blob-4 {
+            width: 250px;
+            height: 250px;
+            background-color: #fed7aa;
+            top: 75%;
+            left: 5%;
+            animation-duration: 22s;
+            animation-delay: -20s;
+            opacity: 0.1;
+        }
 
-.circle3 {
-  border: 2px solid white;
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  animation: zoom 3s linear 0s infinite;
-  animation-delay: 2s;
-  
-}
+        @keyframes moveAndMorph {
 
-@keyframes zoom {
-  0% {
-    backround-color: black;
-  }
-  50% {
-    background-color: white;
-  }
-  100% {
-    background-color: black;
-  }
-}
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+
+            25% {
+                transform: translate(10vw, 20vh) scale(1.1);
+                border-radius: 50% 50% 55% 45% / 55% 50% 50% 45%;
+            }
+
+            50% {
+                transform: translate(-15vw, -10vh) scale(0.9);
+                border-radius: 30% 70% 50% 50% / 50% 60% 40% 50%;
+                opacity: 0.2;
+            }
+
+            75% {
+                transform: translate(5vw, -15vh) scale(1.05);
+                border-radius: 45% 55% 65% 35% / 50% 40% 60% 50%;
+            }
+        }
+
+        /* --- End Abstract Blob Background --- */
+
+        /* Custom gradient for vibrant highlights */
+        .vibrant-gradient {
+            background: linear-gradient(to right, #06b6d4, #fb7185);
+        }
+
+        .vibrant-gradient-text {
+            background: linear-gradient(to right, #06b6d4, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Style for the hero section background */
+        .hero-bg {
+            background-image: url('https://4kwallpapers.com/images/wallpapers/tropical-beach-3840x2160-14811.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Sticky header */
+        header {
+            transition: background-color 0.3s ease-in-out;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        /* Navigation Link Hover (excluding subscribe button) */
+        nav .nav-link {
+            position: relative;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            padding-bottom: 4px;
+            cursor: pointer;
+        }
+
+        nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #06b6d4;
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav .nav-link:hover {
+            transform: translateY(-2px);
+            color: #0891b2;
+        }
+
+        nav .nav-link:hover::after {
+            width: 60%;
+        }
+
+        /* YouTube Subscribe Button Style */
+        .youtube-subscribe-button {
+            background-color: #FF0000;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 18px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            line-height: 1;
+        }
+
+        .youtube-subscribe-button:hover {
+            background-color: #CC0000;
+            transform: scale(1.05);
+            color: white !important;
+        }
+
+        .youtube-subscribe-button i {
+            font-size: 1rem;
+        }
+
+        .youtube-subscribe-button:hover::after {
+            width: 0 !important;
+        }
+
+
+        /* Mobile Menu Styling */
+        #mobile-menu {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        #mobile-menu .nav-link-mobile {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            color: #374151;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        #mobile-menu .nav-link-mobile:hover {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+
+        /* Modern card styling with enhanced hover */
+        .modern-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            padding: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .modern-card {
+                padding: 2rem;
+            }
+        }
+
+        .modern-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Adjust card backgrounds */
+        .modern-card.bg-rose-50 {
+            background-color: rgba(255, 241, 245, 0.92);
+        }
+
+        .modern-card.bg-cyan-50 {
+            background-color: rgba(236, 253, 255, 0.92);
+        }
+
+        /* Button Icon Hover Effects */
+        .button-hover-effect i {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .button-hover-effect.subscribe-button:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .button-hover-effect.contact-button:hover i {
+            transform: translateX(3px) scale(1.05);
+        }
+
+        /* Ensure main content and footer are above background */
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body>
-    <div class="all">
-  <div class="container">
-    <div class="top"></div>
-    <div class="inner-oval">
-      <div class="circle1"></div>
-      <div class="circle2"></div>
-      <div class="circle3"></div>
+
+<body class="antialiased">
+
+    <div class="blob-container" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
     </div>
-  </div>
-</div>
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl sm:text-2xl font-extrabold tracking-tight vibrant-gradient-text">
+                    Eat.Travel.Stretch
+                </a>
+
+                <div class="hidden md:flex items-center space-x-3 lg:space-x-4">
+                    <a data-target="#about"
+                        class="nav-link text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-semibold">About</a>
+                    <a data-target="#live-yoga"
+                        class="nav-link text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-semibold">Live
+                        Yoga</a>
+                    <a data-target="#contact"
+                        class="nav-link text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-sm font-semibold">Contact</a>
+                    <a href="https://www.youtube.com/@EatTravelStretch/" target="_blank" rel="noopener noreferrer" class="youtube-subscribe-button">
+                        <i class="fab fa-youtube"></i>
+                        <span>Subscribe</span>
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-cyan-600 focus:outline-none p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden mt-2">
+                <a data-target="#about" class="nav-link-mobile">About</a>
+                <a data-target="#live-yoga" class="nav-link-mobile">Live Yoga</a>
+                <a data-target="#contact" class="nav-link-mobile">Contact</a>
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="block text-center mt-2 youtube-subscribe-button mx-4 py-2"> <i class="fab fa-youtube"></i>
+                    <span>Subscribe</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-bg text-white min-h-screen flex items-center justify-center text-center relative">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 p-6 sm:p-8 max-w-4xl mx-auto" data-aos="fade-in" data-aos-duration="1500">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 leading-tight tracking-tight">
+                Life's Best Moments Happen Between...
+            </h1>
+            <p class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold vibrant-gradient-text mb-6 sm:mb-8"
+                data-aos="fade-up" data-aos-delay="300">
+                Meals, Miles & Mindfulness.
+            </p>
+            <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90" data-aos="fade-up" data-aos-delay="500">
+                Join Itraa on a journey of yoga, travel adventures, and delicious food discoveries. Find balance,
+                explore the world, and nourish your soul.
+            </p>
+            <a href="#subscribe"
+                class="vibrant-gradient text-white font-bold py-3 px-8 sm:px-10 rounded-full hover:opacity-90 transition duration-300 text-base sm:text-lg shadow-lg transform hover:scale-105 button-hover-effect"
+                data-aos="zoom-in" data-aos-delay="700">
+                Join the Community
+            </a>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 py-16 md:py-20 space-y-16 md:space-y-20 relative z-10">
+
+        <section id="about" class="scroll-mt-16 md:scroll-mt-20">
+            <div class="modern-card flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <img src="https://i.postimg.cc/659YQYrT/portrait.jpg"
+                    alt="Itraa - Yoga Instructor"
+                    class="w-full md:w-1/3 h-auto max-h-[300px] md:max-h-none object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+                    data-aos="fade-right" data-aos-duration="1000"
+                    onerror="this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Not+Found'">
+                <div class="w-full md:w-2/3 text-center md:text-left" data-aos="fade-left" data-aos-duration="1000"
+                    data-aos-delay="200">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-5 text-cyan-700">Welcome to My Channel!</h2>
+                    <p class="text-base md:text-lg mb-4 text-gray-700 leading-relaxed">
+                        I'm Itraa, a certified yoga instructor passionate about sharing the joy, peace, and health
+                        benefits that yoga brings. My practice extends beyond the mat as I love exploring new cultures
+                        through travel and savoring delicious local cuisines.
+                    </p>
+                    <p class="text-base md:text-lg mb-4 text-gray-700 leading-relaxed">
+                        This channel is where my worlds collide: mindful movement, exciting travel moments, and culinary
+                        adventures. Follow along as I share tips, flows, travel vlogs, and food explorations.
+                    </p>
+                    <p class="text-base md:text-lg font-semibold text-cyan-800 mb-4">
+                        My goal is simple: to inspire you to weave yoga into your life for everyday joy and lasting
+                        well-being, while embracing the beauty of exploration and good food.
+                    </p>
+                    <p class="text-base md:text-lg mt-4 font-semibold text-gray-600">
+                        Target: Bringing peace of mind to all 🎯
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="live-yoga" class="scroll-mt-16 md:scroll-mt-20 text-center" data-aos="fade-up"
+            data-aos-duration="1000">
+            <div class="modern-card bg-rose-50">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-rose-600">✨ Exciting News! Free Live Yoga ✨
+                </h2>
+                <div
+                    class="inline-block bg-rose-200 text-rose-800 text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 rounded-full mb-4 md:mb-6 shadow-sm transition-transform duration-300 hover:scale-110">
+                    Coming Soon!
+                </div>
+                <p class="text-base md:text-lg mb-4 md:mb-5 max-w-2xl mx-auto text-gray-700 leading-relaxed">
+                    Get ready to practice with me! I'll soon be hosting <span class="font-semibold text-rose-700">FREE
+                        LIVE yoga sessions</span> right here on the YouTube channel. Join me twice a week in the
+                    evenings for a rejuvenating flow.
+                </p>
+                <p class="text-base md:text-lg font-semibold text-gray-800">
+                    Prepare your mat and let's cultivate peace and strength together!
+                </p>
+                <div class="mt-4 md:mt-6 text-4xl md:text-5xl text-rose-400 transition-transform duration-300 hover:rotate-12"
+                    data-aos="zoom-in" data-aos-delay="300"> <i class="far fa-calendar-alt"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="subscribe" class="scroll-mt-16 md:scroll-mt-20 text-center" data-aos="fade-up"
+            data-aos-duration="1000">
+            <div class="modern-card">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-5 text-cyan-700">Ready to Stretch, Explore, and Eat
+                    Well?</h2>
+                <p class="text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto text-gray-700 leading-relaxed">
+                    Subscribe to the YouTube channel to join our growing community! Your support helps me share this
+                    journey and bring more content your way.
+                </p>
+                <a href="https://www.youtube.com/@EatTravelStretch/" target="_blank" rel="noopener noreferrer"
+                    class="vibrant-gradient text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:opacity-90 transition duration-300 text-base sm:text-lg inline-flex items-center gap-2 sm:gap-3 shadow-lg transform hover:scale-105 button-hover-effect subscribe-button"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-youtube text-lg sm:text-xl"></i> Subscribe on YouTube
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-mt-16 md:scroll-mt-20" data-aos="fade-up" data-aos-duration="1000">
+            <div class="modern-card bg-cyan-50">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-center text-cyan-700">Paid Online Yoga
+                    Classes</h2>
+                <p class="text-base md:text-lg mb-6 md:mb-8 text-center max-w-xl mx-auto text-gray-700 leading-relaxed">
+                    Interested in personalized online yoga sessions? Reach out for inquiries about paid classes tailored
+                    to your needs.
+                </p>
+                <div class="text-center">
+                    <a href="mailto:eattravelstretch@gmail.com"
+                        class="inline-block bg-white border border-cyan-300 text-cyan-700 font-semibold py-3 px-5 sm:px-8 rounded-full hover:bg-cyan-100 hover:border-cyan-400 transition duration-300 text-sm sm:text-lg shadow-sm transform hover:scale-105 button-hover-effect contact-button"
+                        data-aos="zoom-in" data-aos-delay="200">
+                        <i class="far fa-envelope mr-2 text-base sm:text-lg"></i> <span
+                            class="break-all sm:break-normal">eattravelstretch@gmail.com</span> </a>
+                </div>
+            </div>
+        </section>
+
+    
+
+    <footer class="bg-gray-900 text-gray-400 py-8 md:py-10 mt-16 md:mt-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="text-sm">&copy; <span id="current-year"></span> Eat Travel Stretch. All Rights Reserved.</p>
+            <div class="mt-4 md:mt-6 space-x-5 md:space-x-6">
+                <a href="https://www.youtube.com/@EatTravelStretch/"
+                    class="hover:text-rose-400 transition duration-300 text-lg md:text-xl inline-block hover:scale-125"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/eattravelstretch/"
+                    class="hover:text-rose-400 transition duration-300 text-lg md:text-xl inline-block hover:scale-125"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/eattravlstretch/"
+                    class="hover:text-rose-400 transition duration-300 text-lg md:text-xl inline-block hover:scale-125"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            // Change once to true to animate only once
+            once: true,
+            duration: 800,
+            easing: 'ease-in-out',
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-link-mobile'); // Select only internal links
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+        }
+
+        // --- Smooth Scrolling for Navigation Links ---
+        function smoothScroll(targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = document.querySelector('header').offsetHeight + 20; // 20px buffer
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        // Add listeners to Desktop links
+        const desktopLinks = document.querySelectorAll('.hidden.md\\:flex .nav-link');
+        desktopLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                smoothScroll(targetId);
+            });
+        });
+
+        // Add listeners to Mobile links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                smoothScroll(targetId);
+                if (mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                }
+            });
+        });
+
+        // --- Smooth Scroll for Hero Button ---
+        const heroButton = document.querySelector('.hero-bg a[href="#subscribe"]');
+        if (heroButton) {
+            heroButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = heroButton.getAttribute('href');
+                smoothScroll(targetId);
+            });
+        }
+
+    </script>
 
 </body>
+
 </html>
